@@ -1,0 +1,8 @@
+# Review 1 prototype
+Flask==3.1.2
+
+# Testing
+pytest==8.3.4
+
+# Planned for later reviews (not installed yet):
+# PyMuPDF, pytesseract, spacy, reportlab, google-generativeai
