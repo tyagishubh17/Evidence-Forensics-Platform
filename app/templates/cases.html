@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Investigation Cases{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+  <div>
+    <h1 class="h3 fw-bold text-navy mb-1">Investigation Cases</h1>
+    <p class="text-secondary small mb-0">Organized digital evidence dossiers mapped to active cyber crime investigations.</p>
+  </div>
+  <button type="button" class="btn btn-primary-forensic btn-sm d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#newCaseModal">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Create New Case
+  </button>
+</div>
+
+<!-- Filter Pills -->
+<div class="d-flex gap-2 mb-4 overflow-auto pb-1">
+  <a href="{{ url_for('main.cases_list', status='All') }}" class="btn btn-sm {% if current_filter == 'All' %}btn-primary-forensic{% else %}btn-outline-forensic{% endif %}">All Cases ({{ cases | length }})</a>
+  <a href="{{ url_for('main.cases_list', status='Open') }}" class="btn btn-sm {% if current_filter == 'Open' %}btn-primary-forensic{% else %}btn-outline-forensic{% endif %}">Open</a>
+  <a href="{{ url_for('main.cases_list', status='Under Review') }}" class="btn btn-sm {% if current_filter == 'Under Review' %}btn-primary-forensic{% else %}btn-outline-forensic{% endif %}">Under Review</a>
+  <a href="{{ url_for('main.cases_list', status='Closed') }}" class="btn btn-sm {% if current_filter == 'Closed' %}btn-primary-forensic{% else %}btn-outline-forensic{% endif %}">Closed</a>
+</div>
+
+<!-- Cases Grid -->
+<div class="row g-4">
+  {% for c in cases %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card-panel h-100 d-flex flex-column justify-content-between">
+        <div>
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <div class="d-flex align-items-center gap-1">
+              <span class="badge bg-dark font-monospace" style="font-size: 0.78rem;">{{ c.case_number }}</span>
+              <span class="badge {% if c.status == 'Closed' %}bg-secondary{% elif c.status == 'Open' %}bg-success{% else %}bg-primary{% endif %}" style="font-size: 0.72rem;">{{ c.status }}</span>
+            </div>
+            <span class="badge badge-priority-{{ c.priority | lower }}">{{ c.priority }} Priority</span>
+          </div>
+
+          <h3 class="h6 fw-bold text-navy mb-2">{{ c.title }}</h3>
+          <p class="text-secondary small text-truncate-2 mb-3" style="font-size: 0.83rem;">
+            {{ c.description or 'No case description provided.' }}
+          </p>
+        </div>
+
+        <div class="pt-3 border-top mt-auto">
+          <div class="d-flex justify-content-between align-items-center mb-3 text-secondary small" style="font-size: 0.78rem;">
+            <div>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" class="me-1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              {{ c.investigator_name or 'Unassigned' }}
+            </div>
+            <div>
+              <strong>{{ c.evidence_count }}</strong> evidence item(s)
+            </div>
+          </div>
+
+          <a href="{{ url_for('main.case_detail', case_id=c.case_id) }}" class="btn btn-outline-forensic btn-sm w-100">
+            Open Case Dossier →
+          </a>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="col-12">
+      <div class="card-panel text-center py-5 text-secondary">
+        <p class="mb-2">No investigation cases found under filter '{{ current_filter }}'.</p>
+        <button class="btn btn-primary-forensic btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#newCaseModal">Register First Case</button>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- Modal: Create New Case -->
+<div class="modal fade" id="newCaseModal" tabindex="-1" aria-labelledby="newCaseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content border-0 shadow">
+      <form action="{{ url_for('main.new_case') }}" method="post">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title h6 fw-bold text-navy" id="newCaseModalLabel">Register New Investigation Case</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="mb-3">
+            <label class="form-label small fw-semibold text-secondary">Case Reference Number</label>
+            <input type="text" name="case_number" class="form-control" placeholder="e.g. CASE-2026-004" required>
+            <div class="form-text" style="font-size: 0.72rem;">Unique official departmental case identifier.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold text-secondary">Case Title / Incident Type</label>
+            <input type="text" name="title" class="form-control" placeholder="e.g. Identity Theft & Ransom Demands" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold text-secondary">Priority Level</label>
+            <select name="priority" class="form-select">
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold text-secondary">Preliminary Investigation Summary</label>
+            <textarea name="description" class="form-control" rows="3" placeholder="Brief outline of the complaint, complainant details, and suspect vectors..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary-forensic btn-sm">Create & Open Case</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

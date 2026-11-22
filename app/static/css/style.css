@@ -1,0 +1,612 @@
+/* 
+ * Aegis Forensics — Digital Evidence Management & Integrity Platform
+ * Modern Forensic & Cybersecurity Theme (Clean, High-Contrast, Professional)
+ */
+
+:root {
+  /* Core Slate & Dark Navy Palette */
+  --navy-950: #0A0F1D;
+  --navy-900: #0F172A;
+  --navy-800: #1E293B;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748B;
+  --slate-400: #94A3B8;
+  --slate-300: #CBD5E1;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+  --slate-50:  #F8FAFC;
+  --white:     #FFFFFF;
+
+  /* Primary Cyber Blue */
+  --blue-600:  #2563EB;
+  --blue-700:  #1D4ED8;
+  --blue-50:   #EFF6FF;
+  --blue-100:  #DBEAFE;
+
+  /* Forensic Integrity Emerald (MATCH) */
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-50:  #ECFDF5;
+  --emerald-100: #D1FAE5;
+  --emerald-200: #A7F3D0;
+
+  /* Forensic Tamper Alert Crimson (MISMATCH) */
+  --red-600: #DC2626;
+  --red-700: #B91C1C;
+  --red-50:  #FEF2F2;
+  --red-100: #FEE2E2;
+  --red-200: #FECACA;
+
+  /* Warning Amber */
+  --amber-600: #D97706;
+  --amber-50:  #FFFBEB;
+  --amber-200: #FDE68A;
+
+  /* Layout & Typography */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: "Consolas", "Cascadia Code", "Fira Code", "Courier New", monospace;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+}
+
+body {
+  background-color: var(--slate-50);
+  color: var(--navy-900);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+main { flex: 1; }
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* ------------------------------------------------------------- Navigation */
+.app-navbar {
+  background-color: var(--navy-900);
+  border-bottom: 1px solid var(--slate-700);
+  padding: 12px 0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.brand-container:hover {
+  color: var(--slate-100);
+}
+
+.brand-shield {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--blue-600), #1E40AF);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--slate-400);
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-custom {
+  color: var(--slate-300);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-link-custom:hover, .nav-link-custom.active {
+  background-color: var(--navy-800);
+  color: var(--white);
+}
+
+/* User Badge in Header */
+.user-badge-chip {
+  background-color: var(--navy-800);
+  border: 1px solid var(--slate-700);
+  border-radius: 999px;
+  padding: 5px 14px 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--slate-200);
+  font-size: 0.82rem;
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue-600);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.user-badge-num {
+  background: var(--slate-700);
+  color: var(--slate-300);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+}
+
+/* ---------------------------------------------------------------- Cards */
+.card-panel {
+  background-color: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 24px 26px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.card-panel:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.panel-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ------------------------------------------------------------- Stat Cards */
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon-blue { background: var(--blue-50); color: var(--blue-600); }
+.stat-icon-emerald { background: var(--emerald-50); color: var(--emerald-600); }
+.stat-icon-amber { background: var(--amber-50); color: var(--amber-600); }
+.stat-icon-red { background: var(--red-50); color: var(--red-600); }
+
+.stat-number {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--slate-500);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* -------------------------------------------------------------- Buttons */
+.btn-primary-forensic {
+  background-color: var(--blue-600);
+  color: var(--white);
+  border: 1px solid var(--blue-700);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-primary-forensic:hover {
+  background-color: var(--blue-700);
+  color: var(--white);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.btn-emerald {
+  background-color: var(--emerald-600);
+  color: var(--white);
+  border: 1px solid var(--emerald-700);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-emerald:hover {
+  background-color: var(--emerald-700);
+  color: var(--white);
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+}
+
+.btn-outline-forensic {
+  background-color: var(--white);
+  color: var(--slate-700);
+  border: 1px solid var(--slate-300);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-outline-forensic:hover {
+  background-color: var(--slate-100);
+  color: var(--navy-900);
+  border-color: var(--slate-400);
+}
+
+.btn-outline-danger-custom {
+  background-color: var(--white);
+  color: var(--red-600);
+  border: 1px solid var(--red-200);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  transition: all 0.15s ease;
+}
+
+.btn-outline-danger-custom:hover {
+  background-color: var(--red-50);
+  color: var(--red-700);
+  border-color: var(--red-600);
+}
+
+/* ------------------------------------------------------------- Upload Zone */
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--slate-300);
+  border-radius: var(--radius-md);
+  background-color: var(--slate-50);
+  padding: 36px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drop-zone:hover, .drop-zone.is-dragover {
+  border-color: var(--blue-600);
+  background-color: var(--blue-50);
+}
+
+.drop-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--blue-600);
+  margin-bottom: 12px;
+}
+
+.drop-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy-900);
+}
+
+.drop-hint {
+  font-size: 0.82rem;
+  color: var(--slate-500);
+  margin-top: 4px;
+}
+
+.selected-file-card {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background-color: var(--white);
+  border: 1px solid var(--blue-100);
+  border-left: 4px solid var(--blue-600);
+  border-radius: var(--radius-sm);
+}
+
+/* -------------------------------------------------------------- Hash Box */
+.hash-container {
+  background-color: var(--navy-950);
+  color: #38BDF8; /* Tech cyan */
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-700);
+  word-break: break-all;
+  line-height: 1.6;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ------------------------------------------------------------ Status Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.status-pill-match {
+  background-color: var(--emerald-50);
+  color: var(--emerald-700);
+  border: 1px solid var(--emerald-200);
+}
+
+.status-pill-mismatch {
+  background-color: var(--red-50);
+  color: var(--red-700);
+  border: 1px solid var(--red-200);
+}
+
+.status-badge-lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-match {
+  background-color: var(--emerald-600);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+.badge-mismatch {
+  background-color: var(--red-600);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+/* Priority Badges */
+.badge-priority-critical { background-color: var(--red-50); color: var(--red-700); border: 1px solid var(--red-200); }
+.badge-priority-high { background-color: var(--amber-50); color: var(--amber-600); border: 1px solid var(--amber-200); }
+.badge-priority-medium { background-color: var(--blue-50); color: var(--blue-600); border: 1px solid var(--blue-100); }
+.badge-priority-low { background-color: var(--slate-100); color: var(--slate-600); border: 1px solid var(--slate-200); }
+
+/* -------------------------------------------------------------- Tables */
+.table-forensic {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.table-forensic thead th {
+  background-color: var(--slate-50);
+  color: var(--slate-500);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--slate-200);
+  padding: 12px 16px;
+}
+
+.table-forensic tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--slate-100);
+  font-size: 0.88rem;
+  color: var(--slate-700);
+}
+
+.table-forensic tbody tr:hover td {
+  background-color: #F8FAFC;
+}
+
+/* ------------------------------------------------------------- Audit Logs */
+.audit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.audit-item {
+  position: relative;
+  padding-left: 28px;
+  padding-bottom: 18px;
+}
+
+.audit-item::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--slate-200);
+}
+
+.audit-item:last-child::before {
+  display: none;
+}
+
+.audit-marker {
+  position: absolute;
+  left: 2px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--blue-600);
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 1px var(--slate-300);
+}
+
+.audit-action {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--navy-900);
+}
+
+.audit-details {
+  font-size: 0.83rem;
+  color: var(--slate-600);
+  margin-top: 2px;
+}
+
+.audit-time {
+  font-size: 0.74rem;
+  color: var(--slate-400);
+  font-family: var(--font-mono);
+}
+
+/* --------------------------------------------------------- Verification Panel */
+.verification-box {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.result-card-match {
+  background: var(--emerald-50);
+  border: 1px solid var(--emerald-200);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.result-card-mismatch {
+  background: var(--red-50);
+  border: 1px solid var(--red-200);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+/* ---------------------------------------------------------- Evidence Preview */
+.preview-container {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 380px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--slate-300);
+  object-fit: contain;
+}
+
+.preview-text {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: var(--navy-900);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------- Flash Notice */
+.alert-custom {
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.alert-custom-success {
+  background-color: var(--emerald-50);
+  color: var(--emerald-700);
+  border-color: var(--emerald-200);
+}
+
+.alert-custom-error {
+  background-color: var(--red-50);
+  color: var(--red-700);
+  border-color: var(--red-200);
+}
+
+/* ---------------------------------------------------------------- Footer */
+.app-footer {
+  background: var(--white);
+  border-top: 1px solid var(--slate-200);
+  padding: 18px 0;
+  font-size: 0.82rem;
+  color: var(--slate-500);
+  text-align: center;
+}

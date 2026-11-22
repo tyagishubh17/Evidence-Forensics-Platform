@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Investigator Sign In{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+  <div class="col-md-7 col-lg-5">
+    <div class="card-panel text-center mb-4">
+      <div class="brand-shield mx-auto mb-3" style="width: 52px; height: 52px;">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <h1 class="h4 fw-bold text-navy mb-1">Aegis Forensics Portal</h1>
+      <p class="text-secondary small mb-4">Authorized Digital Evidence & Case Management Access</p>
+
+      <form method="post" action="{{ url_for('main.login') }}" class="text-start">
+        <div class="mb-3">
+          <label class="form-label small fw-semibold text-secondary">Investigator Email Address</label>
+          <input type="email" name="email" class="form-control" placeholder="investigator@cybercell.gov" value="investigator@cybercell.gov" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label small fw-semibold text-secondary">Password / Security PIN</label>
+          <input type="password" name="password" class="form-control" placeholder="••••••••" value="investigator123" required>
+        </div>
+        <button type="submit" class="btn btn-primary-forensic w-100 py-2 mt-2">Sign In as Investigator</button>
+      </form>
+
+      <div class="position-relative my-4">
+        <hr class="text-secondary opacity-25">
+        <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-secondary small" style="font-size: 0.75rem;">
+          OR 1-CLICK DEMO ACCESS
+        </span>
+      </div>
+
+      <div class="d-grid text-start">
+        <a href="{{ url_for('main.switch_user', user_id=1) }}" class="btn btn-outline-forensic d-flex align-items-center justify-content-between py-2">
+          <div>
+            <div class="fw-bold small text-navy">Investigator Sharma</div>
+            <div class="text-secondary" style="font-size: 0.72rem;">Authorized Cyber Crime Investigator · Badge INV-5821</div>
+          </div>
+          <span class="badge bg-primary">Instant Access</span>
+        </a>
+      </div>
+
+      <div class="mt-4 pt-2 text-secondary small" style="font-size: 0.76rem;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" class="me-1"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        Authorized Personnel Only · EPICS Project Demonstration
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

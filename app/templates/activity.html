@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Forensic Audit Trail & Activity Logs{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+  <div>
+    <h1 class="h3 fw-bold text-navy mb-1">Forensic Activity & Chain of Custody Log</h1>
+    <p class="text-secondary small mb-0">Immutable chronological record of evidence ingestion, verification runs, and officer actions.</p>
+  </div>
+  <a href="{{ url_for('main.index') }}" class="btn btn-outline-forensic btn-sm">← Back to Dashboard</a>
+</div>
+
+<div class="card-panel">
+  <div class="table-responsive">
+    <table class="table table-forensic align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Log ID</th>
+          <th>Timestamp (UTC)</th>
+          <th>Officer / Identity</th>
+          <th>Action Type</th>
+          <th>Activity Details</th>
+          <th>Case Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for log in logs %}
+          <tr>
+            <td class="font-monospace text-muted small">#{{ log.log_id }}</td>
+            <td class="font-monospace small text-nowrap">{{ log.timestamp }}</td>
+            <td class="fw-semibold text-navy small">{{ log.user_name }}</td>
+            <td>
+              {% if 'VERIFIED' in log.action or 'MATCH' in log.action %}
+                <span class="badge bg-success font-monospace" style="font-size: 0.72rem;">{{ log.action }}</span>
+              {% elif 'TAMPER' in log.action or 'MISMATCH' in log.action %}
+                <span class="badge bg-danger font-monospace" style="font-size: 0.72rem;">{{ log.action }}</span>
+              {% elif 'CASE' in log.action %}
+                <span class="badge bg-primary font-monospace" style="font-size: 0.72rem;">{{ log.action }}</span>
+              {% else %}
+                <span class="badge bg-secondary font-monospace" style="font-size: 0.72rem;">{{ log.action }}</span>
+              {% endif %}
+            </td>
+            <td class="small text-secondary">{{ log.details }}</td>
+            <td>
+              {% if log.case_id %}
+                <a href="{{ url_for('main.case_detail', case_id=log.case_id) }}" class="badge bg-light text-dark border text-decoration-none">
+                  Case #{{ log.case_id }}
+                </a>
+              {% else %}
+                <span class="text-muted small">-</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6" class="text-center py-4 text-secondary">No forensic activity logs recorded yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

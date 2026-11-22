@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+{% block title %}Evidence #{{ evidence.evidence_id }}{% endblock %}
+
+{% macro status_badge(status) -%}
+  <span class="status-badge status-{{ status | lower }} status-badge-lg badge-{{ status | lower }}">
+    {%- if status == 'MATCH' -%}
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>
+      MATCH
+    {%- elif status == 'MISMATCH' -%}
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      MISMATCH
+    {%- else -%}
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      {{ status }}
+    {%- endif -%}
+  </span>
+{%- endmacro %}
+
+{% block content %}
+<!-- Navigation Back Link -->
+<div class="mb-3 d-flex align-items-center justify-content-between">
+  <a class="btn btn-outline-forensic btn-sm d-inline-flex align-items-center gap-2" href="{{ url_for('main.index') }}">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to upload
+  </a>
+
+  {% if evidence.case_id %}
+    <a href="{{ url_for('main.case_detail', case_id=evidence.case_id) }}" class="badge bg-light text-dark border text-decoration-none py-2 px-3">
+      Associated Case: <strong>{{ evidence.case_number }}</strong> · {{ evidence.case_title }}
+    </a>
+  {% endif %}
+</div>
+
+<!-- Header -->
+<div class="card-panel mb-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+    <div>
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="badge bg-dark font-monospace fs-6">Evidence Record #{{ evidence.evidence_id }}</span>
+        <span class="badge bg-primary">{{ evidence.file_type }}</span>
+        <span class="badge bg-light text-secondary border">SHA-256 Secured</span>
+      </div>
+      <h1 class="h3 fw-bold text-navy text-break mb-1">{{ evidence.original_filename }}</h1>
+      <p class="text-secondary small mb-0">
+        Secured digital custody intake record. Fingerprinted with SHA-256 for integrity verification.
+      </p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <a href="{{ url_for('main.preview_evidence_file', evidence_id=evidence.evidence_id) }}" target="_blank" class="btn btn-outline-forensic btn-sm d-flex align-items-center gap-2">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Inspect Raw File
+      </a>
+      <form method="post" action="{{ url_for('main.delete_evidence_record', evidence_id=evidence.evidence_id) }}" onsubmit="return confirm('Are you sure you want to purge this evidence record from the register?');" class="d-inline">
+        <button type="submit" class="btn btn-outline-danger-custom btn-sm d-flex align-items-center gap-1">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Delete Record
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <!-- File Metadata Column -->
+  <div class="col-lg-5">
+    <section class="card-panel h-100">
+      <div class="panel-header">
+        <h2 class="panel-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+          File information
+        </h2>
+      </div>
+
+      <dl class="row g-2 mb-0 small">
+        <dt class="col-sm-5 text-secondary">Original file name</dt>
+        <dd class="col-sm-7 text-navy fw-semibold text-break">{{ evidence.original_filename }}</dd>
+
+        <dt class="col-sm-5 text-secondary">File type</dt>
+        <dd class="col-sm-7 text-navy">{{ evidence.file_type }}</dd>
+
+        <dt class="col-sm-5 text-secondary">MIME type</dt>
+        <dd class="col-sm-7 font-monospace text-muted">{{ evidence.mime_type }}</dd>
+
+        <dt class="col-sm-5 text-secondary">File size</dt>
+        <dd class="col-sm-7 text-navy">{{ evidence.file_size | filesize }}{% if evidence.file_size >= 1024 %} ({{ "{:,}".format(evidence.file_size) }} bytes){% endif %}</dd>
+
+        <dt class="col-sm-5 text-secondary">Uploaded at</dt>
+        <dd class="col-sm-7 text-navy font-monospace">{{ evidence.uploaded_at }}</dd>
+
+        <dt class="col-sm-5 text-secondary">Handling Officer</dt>
+        <dd class="col-sm-7 text-navy">{{ evidence.uploader_name or 'Investigator Sharma' }} ({{ evidence.badge_number or 'INV-5821' }})</dd>
+
+        <dt class="col-sm-5 text-secondary">Stored as</dt>
+        <dd class="col-sm-7 text-break"><code class="text-secondary small">{{ evidence.stored_filename }}</code></dd>
+
+        {% if evidence.notes %}
+          <dt class="col-sm-5 text-secondary">Intake Notes</dt>
+          <dd class="col-sm-7 text-secondary fst-italic">{{ evidence.notes }}</dd>
+        {% endif %}
+      </dl>
+    </section>
+  </div>
+
+  <!-- Recorded SHA-256 Hash Display -->
+  <div class="col-lg-7">
+    <section class="card-panel h-100 d-flex flex-column justify-content-between">
+      <div>
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            Recorded SHA-256 hash
+          </h2>
+          <span class="badge bg-success" style="font-size: 0.75rem;">Hash calculated</span>
+        </div>
+
+        <p class="text-secondary small mb-2">
+          Cryptographic baseline generated at ingestion. Stored immutably for chain-of-custody verification:
+        </p>
+        <div class="hash-container mb-3" id="recorded-hash">{{ evidence.sha256_hash }}</div>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-3 border-top">
+        <button type="button" class="btn btn-outline-forensic btn-sm d-flex align-items-center gap-2" data-copy-target="recorded-hash" id="copy-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy hash
+        </button>
+        <span class="text-secondary small font-monospace" style="font-size: 0.74rem;">
+          256 bits · 64 Hex characters · NIST FIPS 180-4
+        </span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Preview of Document / Content (Review 2 Feature Sneak-Peek) -->
+{% if evidence.file_type in ['Plain text', 'PNG image', 'JPEG image'] or text_preview %}
+<div class="card-panel mb-4">
+  <div class="panel-header">
+    <h2 class="panel-title">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      Preliminary Content Preview (Review 2 Extraction Foundation)
+    </h2>
+    <span class="badge bg-light text-primary border">Non-Destructive Read</span>
+  </div>
+
+  {% if evidence.file_type in ['PNG image', 'JPEG image'] %}
+    <div class="preview-container text-center">
+      <img src="{{ url_for('main.preview_evidence_file', evidence_id=evidence.evidence_id) }}" alt="Evidence Preview" class="preview-img">
+      <div class="small text-muted mt-2">Visual rendering of image evidence. Original format: {{ evidence.mime_type }}.</div>
+    </div>
+  {% elif text_preview %}
+    <div class="preview-container">
+      <pre class="preview-text">{{ text_preview }}</pre>
+    </div>
+  {% endif %}
+</div>
+{% endif %}
+
+<!-- Integrity Verification & Controlled Tampering Section -->
+<section class="card-panel mb-4">
+  <div class="panel-header">
+    <h2 class="panel-title">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Integrity verification operations
+    </h2>
+    <span class="badge bg-light text-dark border">Forensic Audit Tools</span>
+  </div>
+
+  <div class="row g-4 mb-3">
+    <!-- Verify Action Card -->
+    <div class="col-md-6">
+      <div class="verification-box h-100 d-flex flex-column justify-content-between">
+        <div>
+          <h3 class="h6 fw-bold text-navy mb-2">1. Verify Stored Original File</h3>
+          <p class="text-secondary small mb-3">
+            Recalculates the SHA-256 hash of the stored evidence in real time and compares it against the immutable baseline hash recorded at intake.
+          </p>
+        </div>
+        <form method="post" action="{{ url_for('main.verify_evidence', evidence_id=evidence.evidence_id) }}#verification-result">
+          <button type="submit" class="btn btn-emerald w-100 d-flex align-items-center justify-content-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            Verify integrity
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tamper Test Demo Card -->
+    <div class="col-md-6">
+      <div class="verification-box h-100 d-flex flex-column justify-content-between">
+        <div>
+          <h3 class="h6 fw-bold text-navy mb-2">2. Controlled Tamper Demonstration</h3>
+          <p class="text-secondary small mb-3">
+            Creates an isolated copy in <code>test_copies/</code>, injects a 1-byte simulated alteration to the copy, and compares both. <em>The original evidence file is NEVER touched.</em>
+          </p>
+        </div>
+        <form method="post" action="{{ url_for('main.tamper_test', evidence_id=evidence.evidence_id) }}#tamper-result">
+          <button type="submit" class="btn btn-outline-danger-custom w-100 d-flex align-items-center justify-content-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Run tamper test on a copy
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verification Result Display -->
+  {% if verification %}
+  <div class="result-card-{{ verification.status | lower }} mt-4" id="verification-result">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+      {{ status_badge(verification.status) }}
+      <span class="text-secondary small font-monospace">Verified at: {{ verification.checked_at }}</span>
+    </div>
+
+    <p class="fw-semibold mb-3">
+      {% if verification.status == 'MATCH' %}
+        The stored file is unchanged. Its current hash is identical to the recorded hash.
+      {% elif verification.status == 'MISMATCH' %}
+        The stored file has changed since it was uploaded. Its current hash differs from the recorded hash.
+      {% else %}
+        The stored evidence file could not be found, so its integrity cannot be confirmed.
+      {% endif %}
+    </p>
+
+    <div class="bg-white p-3 rounded border font-monospace small">
+      <div class="row g-2">
+        <div class="col-sm-3 text-secondary">Recorded Baseline:</div>
+        <div class="col-sm-9 text-break text-navy">{{ verification.recorded_hash }}</div>
+
+        <div class="col-sm-3 text-secondary">Current Live Hash:</div>
+        <div class="col-sm-9 text-break {% if verification.status == 'MATCH' %}text-success fw-bold{% else %}text-danger fw-bold{% endif %}">
+          {{ verification.current_hash or 'File not found on disk' }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Tamper Test Result Display -->
+  {% if tamper %}
+  <div class="card-panel border-danger mt-4" id="tamper-result">
+    <div class="panel-header border-danger">
+      <h3 class="panel-title text-danger">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Controlled Tamper Demonstration Results
+      </h3>
+      <span class="badge bg-danger">Audit Demonstration</span>
+    </div>
+
+    <div class="table-responsive mb-3">
+      <table class="table table-forensic align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Target Checked</th>
+            <th>SHA-256 Hash Digest</th>
+            <th>Audit Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Recorded Baseline</strong><br>
+              <span class="small text-muted">Fixed at intake</span>
+            </td>
+            <td><code class="text-secondary small font-monospace">{{ tamper.original.recorded_hash }}</code></td>
+            <td><span class="badge bg-secondary">Baseline Reference</span></td>
+          </tr>
+          <tr class="table-danger">
+            <td>
+              <strong class="text-danger">Simulated Tampered Copy</strong><br>
+              <span class="small text-muted font-monospace">app/test_copies/{{ tamper.copy_filename }}</span>
+            </td>
+            <td><code class="text-danger fw-bold small font-monospace">{{ tamper.tampered_copy.current_hash }}</code></td>
+            <td>{{ status_badge(tamper.tampered_copy.status) }}</td>
+          </tr>
+          <tr class="table-success">
+            <td>
+              <strong class="text-success">Original Evidence File</strong><br>
+              <span class="small text-muted">Re-verified in parallel</span>
+            </td>
+            <td><code class="text-success fw-bold small font-monospace">{{ tamper.original.current_hash or 'Not Found' }}</code></td>
+            <td>{{ status_badge(tamper.original.status) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-light border small text-secondary mb-0">
+      {% if tamper.tampered_copy.status == 'MISMATCH' %}Appending one short line to the copy changed its hash completely, so the modification was detected.{% endif %}
+      {% if tamper.original.status == 'MATCH' %}The original evidence file still matches its recorded hash.{% else %}Warning: the original evidence file does not match its recorded hash.{% endif %}
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
