@@ -1,0 +1,11 @@
+SYNTHETIC SAMPLE - FOR TESTING ONLY - NOT A REAL RECORD
+Case reference: CASE-2026-TEST-001
+Date: 2026-11-15
+Reported by: Test Officer A (fictional)
+
+Summary: A fictional complainant reported receiving suspicious messages
+asking for a one-time password. A screenshot and a complaint letter were
+collected. Contact details below are placeholders.
+
+Phone: +91-00000-00000
+Email: sample.user@example.com
