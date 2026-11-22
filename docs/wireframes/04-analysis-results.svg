@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <title>Wireframe 04 - Evidence Analysis Results Page</title>
+  <style>
+    text { font-family: 'Segoe UI', Inter, Arial, sans-serif; fill: #30352F; }
+    .h1 { font-size: 24px; font-weight: 600; }
+    .h2 { font-size: 16px; font-weight: 600; }
+    .b { font-size: 14px; }
+    .bb { font-size: 14px; font-weight: 600; }
+    .s { font-size: 12px; fill: #777A75; }
+    .sb { font-size: 12px; font-weight: 600; }
+    .c { font-size: 12px; }
+    .th { font-size: 11px; fill: #777A75; font-weight: 600; letter-spacing: 0.6px; }
+    .lbl { font-size: 13px; font-weight: 600; }
+    .mono { font-family: Consolas, 'Courier New', monospace; font-size: 13px; fill: #30352F; }
+    .card { fill: #FFFFFF; stroke: #E2DCCF; stroke-width: 1; }
+    .chip { fill: #F8F7F3; stroke: #E2DCCF; stroke-width: 1; }
+    .bar { fill: #E4DFD5; }
+    .ic { fill: none; stroke: #30352F; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .ica { fill: none; stroke: #5E735F; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <rect width="1440" height="900" fill="#F8F7F3"/>
+
+  <!-- ===== Header ===== -->
+  <rect x="0" y="0" width="1440" height="64" fill="#FFFFFF"/>
+  <line x1="0" y1="64.5" x2="1440" y2="64.5" stroke="#E2DCCF"/>
+  <rect x="24" y="16" width="32" height="32" rx="8" fill="#829783"/>
+  <path d="M34 23 h8 l5 5 v13 h-13 z" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M37 31 h7 M37 35 h7" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+  <text x="68" y="38" class="h2">Digital Evidence Platform</text>
+  <text x="1364" y="29" class="bb" text-anchor="end">Demo Investigator</text>
+  <text x="1364" y="45" class="s" text-anchor="end">Investigator</text>
+  <circle cx="1392" cy="32" r="16" fill="#EDE7DC"/>
+  <text x="1392" y="36" class="s" text-anchor="middle" style="fill:#30352F;font-weight:600">DI</text>
+
+  <!-- ===== Sidebar ===== -->
+  <rect x="0" y="65" width="240" height="835" fill="#EDE7DC"/>
+  <text x="24" y="100" class="th">MENU</text>
+  <g transform="translate(0,116)">
+    <rect x="36" y="13" width="6" height="6" rx="1.5" class="ic"/>
+    <rect x="45" y="13" width="6" height="6" rx="1.5" class="ic"/>
+    <rect x="36" y="22" width="6" height="6" rx="1.5" class="ic"/>
+    <rect x="45" y="22" width="6" height="6" rx="1.5" class="ic"/>
+    <text x="64" y="25" class="b">Dashboard</text>
+  </g>
+  <g transform="translate(0,164)">
+    <path d="M36 14 h5 l2 2 h8 v11 h-15 z" class="ic"/>
+    <text x="64" y="25" class="b">Cases</text>
+  </g>
+  <g transform="translate(0,212)">
+    <rect x="16" y="0" width="208" height="40" rx="8" fill="#FFFFFF" stroke="#E2DCCF"/>
+    <rect x="16" y="10" width="3" height="20" rx="1.5" fill="#829783"/>
+    <path d="M38 12 h7 l4 4 v12 h-11 z" class="ica"/>
+    <text x="64" y="25" class="bb">Evidence</text>
+  </g>
+  <g transform="translate(0,260)">
+    <path d="M36 28 h15 M39 25 v-6 M43.5 25 v-11 M48 25 v-4" class="ic"/>
+    <text x="64" y="25" class="b">Reports</text>
+  </g>
+
+  <!-- ===== Page title ===== -->
+  <text x="264" y="94" class="s">Cases  /  CASE-2026-014  /  Evidence  /  EV-0002</text>
+  <text x="264" y="126" class="h1">synthetic_complaint.pdf</text>
+  <text x="264" y="152" class="b" style="fill:#777A75">PDF · 84.3 KB · Uploaded 22 Nov 2026, 10:42</text>
+  <rect x="1216" y="98" width="200" height="44" rx="8" fill="#829783"/>
+  <path d="M1234 110 h7 l4 4 v13 h-11 z M1237 120 h5 M1237 123.5 h5" fill="none" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="1256" y="125" class="bb" style="fill:#FFFFFF">Generate PDF report</text>
+
+  <!-- ===== File integrity strip ===== -->
+  <rect x="264" y="172" width="1152" height="56" rx="12" class="card"/>
+  <text x="288" y="205" class="lbl">SHA-256</text>
+  <text x="356" y="205" class="mono">aea095f58f983918ea983f86cd155d0ff0459fd7255dbd63445c4b781d16d183</text>
+  <text x="1236" y="205" class="s" text-anchor="end">Last verified 22 Nov 2026, 10:45</text>
+  <rect x="1252" y="186" width="140" height="28" rx="14" fill="#E3EAE3" stroke="#829783"/>
+  <path d="M1266 200 l4 4 l7 -8" class="ica"/>
+  <text x="1284" y="205" class="sb" style="fill:#4F6650">Integrity: MATCH</text>
+
+  <!-- ===== Tabs ===== -->
+  <line x1="264" y1="268.5" x2="1416" y2="268.5" stroke="#E2DCCF"/>
+  <text x="264" y="256" class="bb">Analysis</text>
+  <rect x="264" y="267" width="60" height="3" rx="1.5" fill="#829783"/>
+  <text x="356" y="256" class="b" style="fill:#777A75">Metadata &amp; integrity</text>
+  <text x="520" y="256" class="b" style="fill:#777A75">Activity log</text>
+
+  <!-- ===== Extracted text ===== -->
+  <rect x="264" y="288" width="680" height="296" rx="12" class="card"/>
+  <text x="288" y="324" class="h2">Extracted text</text>
+  <text x="920" y="324" class="s" text-anchor="end">Source: PDF text extraction · 2 pages</text>
+  <rect x="288" y="340" width="632" height="220" rx="8" fill="#F8F7F3" stroke="#E2DCCF"/>
+  <text x="304" y="366" class="mono" style="font-size:12px">Complaint reference: SYN-0042 (synthetic sample document)</text>
+  <rect x="304" y="384" width="580" height="8" rx="4" class="bar"/>
+  <rect x="304" y="408" width="540" height="8" rx="4" class="bar"/>
+  <rect x="304" y="432" width="590" height="8" rx="4" class="bar"/>
+  <rect x="304" y="456" width="500" height="8" rx="4" class="bar"/>
+  <rect x="304" y="480" width="570" height="8" rx="4" class="bar"/>
+  <rect x="304" y="504" width="530" height="8" rx="4" class="bar"/>
+  <rect x="304" y="528" width="320" height="8" rx="4" class="bar"/>
+  <rect x="906" y="348" width="4" height="204" rx="2" fill="#ECE7DD"/>
+  <rect x="906" y="348" width="4" height="70" rx="2" fill="#B7B9B3"/>
+
+  <!-- ===== Entities ===== -->
+  <rect x="968" y="288" width="448" height="296" rx="12" class="card"/>
+  <text x="992" y="324" class="h2">Entities</text>
+  <text x="1392" y="324" class="s" text-anchor="end">spaCy + regular expressions</text>
+
+  <text x="992" y="362" class="s">Names</text>
+  <rect x="1100" y="345" width="76" height="26" rx="13" class="chip"/>
+  <text x="1138" y="362" class="c" text-anchor="middle">Person A</text>
+  <rect x="1184" y="345" width="76" height="26" rx="13" class="chip"/>
+  <text x="1222" y="362" class="c" text-anchor="middle">Person B</text>
+
+  <text x="992" y="402" class="s">Phone numbers</text>
+  <rect x="1100" y="385" width="124" height="26" rx="13" class="chip"/>
+  <text x="1162" y="402" class="c" text-anchor="middle">+91 90000 00000</text>
+  <rect x="1232" y="385" width="124" height="26" rx="13" class="chip"/>
+  <text x="1294" y="402" class="c" text-anchor="middle">+91 90000 00001</text>
+
+  <text x="992" y="442" class="s">Emails</text>
+  <rect x="1100" y="425" width="124" height="26" rx="13" class="chip"/>
+  <text x="1162" y="442" class="c" text-anchor="middle">user@example.com</text>
+  <rect x="1232" y="425" width="132" height="26" rx="13" class="chip"/>
+  <text x="1298" y="442" class="c" text-anchor="middle">admin@example.org</text>
+
+  <text x="992" y="482" class="s">Dates</text>
+  <rect x="1100" y="465" width="96" height="26" rx="13" class="chip"/>
+  <text x="1148" y="482" class="c" text-anchor="middle">12 Nov 2026</text>
+  <rect x="1204" y="465" width="96" height="26" rx="13" class="chip"/>
+  <text x="1252" y="482" class="c" text-anchor="middle">14 Nov 2026</text>
+
+  <text x="992" y="522" class="s">Locations</text>
+  <rect x="1100" y="505" width="96" height="26" rx="13" class="chip"/>
+  <text x="1148" y="522" class="c" text-anchor="middle">Sample City</text>
+  <rect x="1204" y="505" width="120" height="26" rx="13" class="chip"/>
+  <text x="1264" y="522" class="c" text-anchor="middle">Sector 5 (demo)</text>
+
+  <text x="992" y="562" class="s">Automatically extracted — verify before relying on it.</text>
+
+  <!-- ===== Summary ===== -->
+  <rect x="264" y="608" width="680" height="240" rx="12" class="card"/>
+  <text x="288" y="644" class="h2">Preliminary summary</text>
+  <text x="920" y="644" class="s" text-anchor="end">Optional AI service (planned)</text>
+  <rect x="288" y="668" width="620" height="8" rx="4" class="bar"/>
+  <rect x="288" y="692" width="600" height="8" rx="4" class="bar"/>
+  <rect x="288" y="716" width="628" height="8" rx="4" class="bar"/>
+  <rect x="288" y="740" width="380" height="8" rx="4" class="bar"/>
+  <rect x="288" y="776" width="632" height="48" rx="8" fill="#EDE7DC"/>
+  <circle cx="312" cy="800" r="8" fill="none" stroke="#6B5E45" stroke-width="1.4"/>
+  <path d="M312 797 v7" stroke="#6B5E45" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="312" cy="794" r="1" fill="#6B5E45"/>
+  <text x="332" y="804" class="sb">AI-generated preliminary summary — requires investigator review</text>
+
+  <!-- ===== Timeline ===== -->
+  <rect x="968" y="608" width="448" height="240" rx="12" class="card"/>
+  <text x="992" y="644" class="h2">Timeline</text>
+  <line x1="1000" y1="724" x2="1384" y2="724" stroke="#D6D0C3" stroke-width="2"/>
+
+  <text x="1024" y="704" class="sb" text-anchor="middle">12 Nov</text>
+  <circle cx="1024" cy="724" r="6" fill="#FFFFFF" stroke="#829783" stroke-width="2"/>
+  <text x="1024" y="752" class="s" text-anchor="middle">Message</text>
+  <text x="1024" y="768" class="s" text-anchor="middle">referenced</text>
+
+  <text x="1136" y="704" class="sb" text-anchor="middle">14 Nov</text>
+  <circle cx="1136" cy="724" r="6" fill="#FFFFFF" stroke="#829783" stroke-width="2"/>
+  <text x="1136" y="752" class="s" text-anchor="middle">Call</text>
+  <text x="1136" y="768" class="s" text-anchor="middle">mentioned</text>
+
+  <text x="1248" y="704" class="sb" text-anchor="middle">18 Nov</text>
+  <circle cx="1248" cy="724" r="6" fill="#FFFFFF" stroke="#829783" stroke-width="2"/>
+  <text x="1248" y="752" class="s" text-anchor="middle">Document</text>
+  <text x="1248" y="768" class="s" text-anchor="middle">dated</text>
+
+  <text x="1360" y="704" class="sb" text-anchor="middle">22 Nov</text>
+  <circle cx="1360" cy="724" r="6" fill="#829783"/>
+  <text x="1360" y="752" class="s" text-anchor="middle">Evidence</text>
+  <text x="1360" y="768" class="s" text-anchor="middle">uploaded</text>
+
+  <text x="992" y="820" class="s">Built from extracted dates and upload records.</text>
+
+  <!-- ===== Annotations ===== -->
+  <text x="264" y="880" class="s">Wireframe — proposed design (Review 1)</text>
+  <rect x="1344" y="862" width="72" height="26" rx="13" fill="#FFFFFF" stroke="#829783" stroke-width="1"/>
+  <text x="1380" y="879" class="s" text-anchor="middle" style="fill:#5E735F;font-weight:600">Planned</text>
+</svg>

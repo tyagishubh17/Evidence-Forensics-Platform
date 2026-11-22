@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Application Workflow</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#30352F"/></marker>
+<marker id="arr-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#777A75"/></marker>
+<marker id="arr-sage" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#829783"/></marker>
+</defs>
+<rect x="0" y="0" width="1400" height="900" fill="#F8F7F3"/>
+<text x="40" y="56" font-size="28" font-weight="700" fill="#30352F" text-anchor="start">Application Workflow</text>
+<text x="40" y="86" font-size="15" font-weight="400" fill="#777A75" text-anchor="start">Intended end-to-end flow of the complete application. Steps 3–4 and the integrity branch are working in the Review 1 prototype.</text>
+<rect x="340" y="124" width="460" height="62" rx="12" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="6 4"/>
+<circle cx="374" cy="155.0" r="16" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2"/>
+<text x="374" y="160.5" font-size="15" font-weight="700" fill="#777A75" text-anchor="middle">1</text>
+<text x="406" y="151" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Investigator login</text>
+<text x="406" y="172" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">Authorized users only</text>
+<rect x="710" y="114" width="76" height="20" rx="10" fill="#FFFFFF" stroke="#777A75" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="748.0" y="128.5" font-size="13" font-weight="600" fill="#777A75" text-anchor="middle">Planned</text>
+<line x1="570.0" y1="186" x2="570.0" y2="198" stroke="#777A75" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-grey)"/>
+<rect x="340" y="210" width="460" height="62" rx="12" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="6 4"/>
+<circle cx="374" cy="241.0" r="16" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2"/>
+<text x="374" y="246.5" font-size="15" font-weight="700" fill="#777A75" text-anchor="middle">2</text>
+<text x="406" y="237" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Create investigation case</text>
+<text x="406" y="258" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">Title, description, status</text>
+<rect x="710" y="200" width="76" height="20" rx="10" fill="#FFFFFF" stroke="#777A75" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="748.0" y="214.5" font-size="13" font-weight="600" fill="#777A75" text-anchor="middle">Planned</text>
+<line x1="570.0" y1="272" x2="570.0" y2="284" stroke="#777A75" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-grey)"/>
+<rect x="340" y="296" width="460" height="62" rx="12" fill="#EAF0EA" stroke="#829783" stroke-width="1.5"/>
+<circle cx="374" cy="327.0" r="16" fill="#829783"/>
+<text x="374" y="332.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="406" y="323" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Upload digital evidence</text>
+<text x="406" y="344" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">PDF, JPG, JPEG, PNG, TXT · metadata recorded</text>
+<rect x="606" y="286" width="180" height="20" rx="10" fill="#829783" stroke="#829783" stroke-width="1"/>
+<text x="696.0" y="300.5" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Implemented (Review 1)</text>
+<line x1="570.0" y1="358" x2="570.0" y2="370" stroke="#829783" stroke-width="1.8" marker-end="url(#arr-sage)"/>
+<rect x="340" y="382" width="460" height="62" rx="12" fill="#EAF0EA" stroke="#829783" stroke-width="1.5"/>
+<circle cx="374" cy="413.0" r="16" fill="#829783"/>
+<text x="374" y="418.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="406" y="409" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Calculate &amp; store SHA-256 hash</text>
+<text x="406" y="430" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">hashlib · hash saved with file metadata</text>
+<rect x="606" y="372" width="180" height="20" rx="10" fill="#829783" stroke="#829783" stroke-width="1"/>
+<text x="696.0" y="386.5" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Implemented (Review 1)</text>
+<line x1="570.0" y1="444" x2="570.0" y2="456" stroke="#777A75" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-grey)"/>
+<rect x="340" y="468" width="460" height="62" rx="12" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="6 4"/>
+<circle cx="374" cy="499.0" r="16" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2"/>
+<text x="374" y="504.5" font-size="15" font-weight="700" fill="#777A75" text-anchor="middle">5</text>
+<text x="406" y="495" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Extract document information</text>
+<text x="406" y="516" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">PDF text (PyMuPDF) · image OCR (Tesseract)</text>
+<rect x="710" y="458" width="76" height="20" rx="10" fill="#FFFFFF" stroke="#777A75" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="748.0" y="472.5" font-size="13" font-weight="600" fill="#777A75" text-anchor="middle">Planned</text>
+<line x1="570.0" y1="530" x2="570.0" y2="542" stroke="#777A75" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-grey)"/>
+<rect x="340" y="554" width="460" height="62" rx="12" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="6 4"/>
+<circle cx="374" cy="585.0" r="16" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2"/>
+<text x="374" y="590.5" font-size="15" font-weight="700" fill="#777A75" text-anchor="middle">6</text>
+<text x="406" y="581" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Preliminary AI-assisted analysis</text>
+<text x="406" y="602" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">Entities (spaCy + regex) · summary</text>
+<rect x="710" y="544" width="76" height="20" rx="10" fill="#FFFFFF" stroke="#777A75" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="748.0" y="558.5" font-size="13" font-weight="600" fill="#777A75" text-anchor="middle">Planned</text>
+<line x1="570.0" y1="616" x2="570.0" y2="628" stroke="#777A75" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-grey)"/>
+<rect x="340" y="640" width="460" height="62" rx="12" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="6 4"/>
+<circle cx="374" cy="671.0" r="16" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2"/>
+<text x="374" y="676.5" font-size="15" font-weight="700" fill="#777A75" text-anchor="middle">7</text>
+<text x="406" y="667" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Display information &amp; timeline</text>
+<text x="406" y="688" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">Organized by case, chronological order</text>
+<rect x="710" y="630" width="76" height="20" rx="10" fill="#FFFFFF" stroke="#777A75" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="748.0" y="644.5" font-size="13" font-weight="600" fill="#777A75" text-anchor="middle">Planned</text>
+<line x1="570.0" y1="702" x2="570.0" y2="714" stroke="#777A75" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-grey)"/>
+<rect x="340" y="726" width="460" height="62" rx="12" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="6 4"/>
+<circle cx="374" cy="757.0" r="16" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2"/>
+<text x="374" y="762.5" font-size="15" font-weight="700" fill="#777A75" text-anchor="middle">8</text>
+<text x="406" y="753" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Generate PDF report</text>
+<text x="406" y="774" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">Downloadable report (ReportLab)</text>
+<rect x="710" y="716" width="76" height="20" rx="10" fill="#FFFFFF" stroke="#777A75" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="748.0" y="730.5" font-size="13" font-weight="600" fill="#777A75" text-anchor="middle">Planned</text>
+<path d="M322,130 H312 V180 H322" fill="none" stroke="#777A75" stroke-width="1.2"/>
+<text x="298" y="152.0" font-size="15" font-weight="700" fill="#30352F" text-anchor="end">Supporting feature</text>
+<text x="298" y="172.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="end">Authentication</text>
+<path d="M322,216 H312 V438 H322" fill="none" stroke="#777A75" stroke-width="1.2"/>
+<text x="298" y="324.0" font-size="15" font-weight="700" fill="#30352F" text-anchor="end">Module 1</text>
+<text x="298" y="344.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="end">Evidence Management &amp; Integrity</text>
+<path d="M322,474 H312 V610 H322" fill="none" stroke="#777A75" stroke-width="1.2"/>
+<text x="298" y="539.0" font-size="15" font-weight="700" fill="#30352F" text-anchor="end">Module 2</text>
+<text x="298" y="559.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="end">Preliminary AI-Assisted Analysis</text>
+<path d="M322,646 H312 V696 H322" fill="none" stroke="#777A75" stroke-width="1.2"/>
+<text x="298" y="668.0" font-size="15" font-weight="700" fill="#30352F" text-anchor="end">Module 3</text>
+<text x="298" y="688.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="end">Organization &amp; Timeline</text>
+<path d="M322,732 H312 V782 H322" fill="none" stroke="#777A75" stroke-width="1.2"/>
+<text x="298" y="754.0" font-size="15" font-weight="700" fill="#30352F" text-anchor="end">Module 4</text>
+<text x="298" y="774.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="end">Dashboard &amp; Report Generation</text>
+<line x1="800" y1="413.0" x2="888" y2="413.0" stroke="#829783" stroke-width="1.8" marker-end="url(#arr-sage)"/>
+<path d="M845,413.0 V543.0 H888" fill="none" stroke="#829783" stroke-width="1.8" marker-end="url(#arr-sage)"/>
+<circle cx="845" cy="413.0" r="4" fill="#829783"/>
+<rect x="890" y="365.0" width="470" height="96" rx="12" fill="#EAF0EA" stroke="#829783" stroke-width="1.5"/>
+<text x="908" y="395.0" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Verify integrity</text>
+<text x="908" y="417.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">Recompute SHA-256 of stored file, compare with recorded hash</text>
+<rect x="908" y="429.0" width="74" height="22" rx="11" fill="#829783" stroke="#829783" stroke-width="1"/>
+<text x="945" y="445.0" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">MATCH</text>
+<rect x="992" y="429.0" width="96" height="22" rx="11" fill="#F4E4E0" stroke="#A8574A" stroke-width="1"/>
+<text x="1040" y="445.0" font-size="13" font-weight="700" fill="#A8574A" text-anchor="middle">MISMATCH</text>
+<rect x="1166" y="355.0" width="180" height="20" rx="10" fill="#829783" stroke="#829783" stroke-width="1"/>
+<text x="1256.0" y="369.5" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Implemented (Review 1)</text>
+<rect x="890" y="495.0" width="470" height="96" rx="12" fill="#EAF0EA" stroke="#829783" stroke-width="1.5"/>
+<text x="908" y="525.0" font-size="16" font-weight="600" fill="#30352F" text-anchor="start">Tamper-test on a copy</text>
+<text x="908" y="547.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">Copy saved to app/test_copies/ and modified, then checked</text>
+<text x="908" y="569.0" font-size="13" font-weight="400" fill="#777A75" text-anchor="start">against the original hash → MISMATCH. Original never changed.</text>
+<rect x="1166" y="485.0" width="180" height="20" rx="10" fill="#829783" stroke="#829783" stroke-width="1"/>
+<text x="1256.0" y="499.5" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Implemented (Review 1)</text>
+<rect x="890" y="124" width="470" height="190" rx="12" fill="#FFFFFF" stroke="#DCD4C6" stroke-width="1"/>
+<text x="908" y="156" font-size="16" font-weight="700" fill="#30352F" text-anchor="start">Review 1 prototype covers</text>
+<path d="M910,182 l5,5 l9,-10" fill="none" stroke="#829783" stroke-width="2"/>
+<text x="934" y="187" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">File upload with type and empty-file validation</text>
+<path d="M910,208 l5,5 l9,-10" fill="none" stroke="#829783" stroke-width="2"/>
+<text x="934" y="213" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">File metadata: name, size, type, upload time</text>
+<path d="M910,234 l5,5 l9,-10" fill="none" stroke="#829783" stroke-width="2"/>
+<text x="934" y="239" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">SHA-256 hash generated and stored (SQLite)</text>
+<path d="M910,260 l5,5 l9,-10" fill="none" stroke="#829783" stroke-width="2"/>
+<text x="934" y="265" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">Integrity verification: MATCH / MISMATCH</text>
+<path d="M910,286 l5,5 l9,-10" fill="none" stroke="#829783" stroke-width="2"/>
+<text x="934" y="291" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">Tamper-detection demo on a separate copy</text>
+<rect x="890" y="631.0" width="470" height="132" rx="12" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="908" y="663.0" font-size="16" font-weight="700" fill="#30352F" text-anchor="start">Planned for Reviews 2–3</text>
+<text x="908" y="691.0" font-size="14" font-weight="400" fill="#777A75" text-anchor="start">Login, case management, PDF text extraction, OCR,</text>
+<text x="908" y="715.0" font-size="14" font-weight="400" fill="#777A75" text-anchor="start">entity extraction, summarization, timeline,</text>
+<text x="908" y="739.0" font-size="14" font-weight="400" fill="#777A75" text-anchor="start">dashboard and PDF report generation.</text>
+<rect x="40" y="830" width="1320" height="52" rx="10" fill="#FFFFFF" stroke="#DCD4C6" stroke-width="1"/>
+<rect x="64" y="846" width="36" height="20" rx="6" fill="#EAF0EA" stroke="#829783" stroke-width="1.5"/>
+<text x="112" y="861" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">Implemented in Review 1 prototype</text>
+<rect x="396" y="846" width="36" height="20" rx="6" fill="#FFFFFF" stroke="#777A75" stroke-width="1.2" stroke-dasharray="5 3"/>
+<text x="444" y="861" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">Planned for Reviews 2–3</text>
+<line x1="654" y1="856" x2="694" y2="856" stroke="#829783" stroke-width="1.8" marker-end="url(#arr-sage)"/>
+<text x="706" y="861" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">Implemented flow</text>
+<line x1="864" y1="856" x2="904" y2="856" stroke="#777A75" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arr-grey)"/>
+<text x="916" y="861" font-size="14" font-weight="400" fill="#30352F" text-anchor="start">Planned flow</text>
+</svg>
