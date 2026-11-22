@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environment
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Runtime data: uploaded evidence, tamper-test copies and the local database
+app/uploads/*
+!app/uploads/.gitkeep
+app/test_copies/*
+!app/test_copies/.gitkeep
+instance/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
